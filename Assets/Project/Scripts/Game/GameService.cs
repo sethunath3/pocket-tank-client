@@ -4,6 +4,7 @@ using UnityEngine;
 using PocketTank.Connection;
 using SocketIO;
 using PocketTank.Generics;
+using PocketTank.Gameplay;
 
 namespace PocketTank.Game
 {
@@ -26,6 +27,11 @@ namespace PocketTank.Game
             connectionController = new ConnectionController(connectorPrefab);
         }
 
+        public ConnectionController GetConnectionController()
+        {
+            return connectionController;
+        }
+
         void Update()
         {
             
@@ -33,6 +39,7 @@ namespace PocketTank.Game
 
         public void ConnectionExtablished(SocketIOEvent ev)
         {
+            Debug.Log("first scene");
             ChangeGameState(authState);
             Dictionary<string, string> data = new Dictionary<string, string>();
             data["PLAYER_ID"] = PlayerPrefs.GetInt("PLAYER_ID", 0).ToString();
@@ -48,7 +55,6 @@ namespace PocketTank.Game
 
         public void InitiateMatchMaking()
         {
-            ChangeGameState(matchMakingState);
             connectionController.Emit("INITIATE_MATCH_MAKING");
             ChangeGameState(matchMakingState);
         }
@@ -66,6 +72,34 @@ namespace PocketTank.Game
             }
             currentGameState = newState;
             currentGameState.OnEnterState();
+        }
+
+        public void EnableGameplayTurn(SocketIOEvent ev)
+        {
+            if (currentGameState == gamePlayState)
+            {
+                Debug.Log("enabling turn auto");
+                GameplayService.Instance.EnableGameplayTurn();
+            }
+        }
+
+        public void DisableGameplayTurn(SocketIOEvent ev)
+        {
+            if (currentGameState == gamePlayState)
+            {
+                GameplayService.Instance.DisableGameplayTurn();
+            }
+        }
+
+        public void EnemyFired(SocketIOEvent ev)
+        {
+            Debug.Log("enemy firing");
+            if (currentGameState == gamePlayState)
+            {
+                Debug.Log("enemy firing");
+                float firingAngle = float.Parse(ev.data.ToDictionary()["FIRING_ANGLE"]);
+                GameplayService.Instance.EnemyFired(firingAngle);
+            }
         }
                     
     }

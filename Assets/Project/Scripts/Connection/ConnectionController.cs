@@ -20,6 +20,9 @@ namespace PocketTank.Connection
                 connectorObject.On ("CONNECTION_ESTABLISHED", GameService.Instance.ConnectionExtablished);
                 connectorObject.On ("AUTH_SUCCESSFULL", GameService.Instance.UserAuthenticated);
                 connectorObject.On ("MATCHMAKING_SUCCESSFULL", GameService.Instance.MatchMakingSuccessfull);
+                connectorObject.On ("TURN_ACTIVE", GameService.Instance.EnableGameplayTurn);
+                connectorObject.On ("TURN_INACTIVE", GameService.Instance.DisableGameplayTurn);
+                connectorObject.On ("ENEMY_FIRED", GameService.Instance.EnemyFired);
             }
         }
 
