@@ -6,6 +6,8 @@ namespace PocketTank.Tank
 {
     public class TankView : MonoBehaviour
     {
+        [SerializeField]
+        private TurretView turretView;
         public void SetPosition(Vector3 position)
         {
 
@@ -14,6 +16,14 @@ namespace PocketTank.Tank
         public void SetDirection()
         {
             
+        }
+
+        public void SetFiringAngle(float angle)
+        {
+            if(turretView != null)
+            {
+                turretView.SetFiringAngle(angle);
+            }
         }
     }
 }

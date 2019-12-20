@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using PocketTank.Generics;
 using PocketTank.Screens;
+using PocketTank.Tank;
 
 namespace PocketTank.Gameplay
 {
@@ -10,6 +11,14 @@ namespace PocketTank.Gameplay
     {
         [SerializeField]
         private GameplayUI gameplayUIScript;
+        [SerializeField]
+        private GameplayPropsSO gameplayPropertiesSO;
+        private GameplayController controller;
+
+        public void StartGameplay()
+        {
+            controller = new GameplayController(gameplayPropertiesSO);
+        }
 
         public void EnableGameplayTurn()
         {
@@ -25,5 +34,17 @@ namespace PocketTank.Gameplay
         {
             gameplayUIScript.SetMsg("Enemy Fired at an angle: " + angle);
         }
+
+        public void SetPlayerTankAngle(float angle)
+        {
+            controller.SetPlayerTankAngle(angle);
+        }
+
+        public void EnemyTargetChanged(float angle)
+        {
+            controller.SetEnemyTankAngle(angle);
+        }
+
+        
     }
 }

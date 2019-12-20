@@ -62,6 +62,7 @@ namespace PocketTank.Game
         public void MatchMakingSuccessfull(SocketIOEvent ev)
         {
             ChangeGameState(gamePlayState);
+            GameplayService.Instance.StartGameplay();
         }
 
         private void ChangeGameState(GameState newState)
@@ -99,6 +100,15 @@ namespace PocketTank.Game
                 Debug.Log("enemy firing");
                 float firingAngle = float.Parse(ev.data.ToDictionary()["FIRING_ANGLE"]);
                 GameplayService.Instance.EnemyFired(firingAngle);
+            }
+        }
+
+        public void EnemyChangedAngle(SocketIOEvent ev)
+        {
+            if (currentGameState == gamePlayState)
+            {
+                float firingAngle = float.Parse(ev.data.ToDictionary()["FIRING_ANGLE"]);
+                GameplayService.Instance.EnemyTargetChanged(firingAngle);
             }
         }
                     

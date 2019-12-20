@@ -23,6 +23,7 @@ namespace PocketTank.Connection
                 connectorObject.On ("TURN_ACTIVE", GameService.Instance.EnableGameplayTurn);
                 connectorObject.On ("TURN_INACTIVE", GameService.Instance.DisableGameplayTurn);
                 connectorObject.On ("ENEMY_FIRED", GameService.Instance.EnemyFired);
+                connectorObject.On ("ENEMY_ANGLE_CHANGED", GameService.Instance.EnemyChangedAngle);
             }
         }
 

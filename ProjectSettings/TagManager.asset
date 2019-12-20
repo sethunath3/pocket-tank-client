@@ -13,8 +13,8 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
+  - Tank
+  - BG
   - 
   - 
   - 
@@ -40,4 +40,19 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: BG
+    uniqueID: 2498947739
+    locked: 0
+  - name: Bullet
+    uniqueID: 575817347
+    locked: 0
+  - name: Tank_wheel
+    uniqueID: 930431615
+    locked: 0
+  - name: Tank_turret
+    uniqueID: 1393062575
+    locked: 0
+  - name: Tank_Body
+    uniqueID: 368450345
     locked: 0

@@ -8,7 +8,8 @@ namespace PocketTank.Tank
     {
         public void SetFiringAngle(float angle)
         {
-            
+            Debug.Log("angle: " + angle);
+            gameObject.transform.rotation = Quaternion.Euler(0, 0, angle);
         }
     }
 }

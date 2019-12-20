@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using PocketTank.Game;
+using PocketTank.Gameplay;
 
 namespace PocketTank.Screens
 {
@@ -12,6 +13,9 @@ namespace PocketTank.Screens
         private Button fireBtn;
         [SerializeField]
         private Slider slider;
+        [SerializeField]
+        private Text turnInfo;
+
         [SerializeField]
         private Text msgText;
         void Start()
@@ -32,7 +36,7 @@ namespace PocketTank.Screens
             Debug.Log("Enabling turn view");
             fireBtn.enabled = true;
             slider.enabled = true;
-            // msgText.text = "Your turn";
+            turnInfo.text = "Your turn";
         }
 
         public void DisableTurn()
@@ -40,7 +44,7 @@ namespace PocketTank.Screens
             Debug.Log("Disabling turn view");
             fireBtn.enabled = false;
             slider.enabled = false;
-            msgText.text = "Enemy's turn";
+            turnInfo.text = "Enemy's turn";
         }
 
         private void OnFire()
@@ -53,6 +57,14 @@ namespace PocketTank.Screens
         public void SetMsg(string msg)
         {
             msgText.text = msg;
+        }
+
+        public void OnFiringSliderChange()
+        {
+            GameplayService.Instance.SetPlayerTankAngle(slider.value);
+            Dictionary<string, string> data = new Dictionary<string, string>();
+            data["FIRING_ANGLE"] = slider.value.ToString();
+            GameService.Instance.GetConnectionController().Emit("ANGLE_CHANGED", new JSONObject(data));
         }
     }
 }
