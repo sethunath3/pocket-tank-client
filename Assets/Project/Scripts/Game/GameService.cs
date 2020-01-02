@@ -8,6 +8,13 @@ using PocketTank.Gameplay;
 
 namespace PocketTank.Game
 {
+    public enum GameLayers
+    {
+        PlayerTank = 8,
+        Ground = 11,
+        EnemyTank = 12
+    }
+    
     public class GameService : GenericMonoSingleton<GameService>
     {
         [SerializeField]

@@ -12,7 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d963f84ae63cbe498271c6963d8e511, type: 3}
   m_Name: GameplayPropsSO
   m_EditorClassIdentifier: 
-  playerTankPrefab: {fileID: 1844620919613191878, guid: a88c5f90452b74044b8ed9bb5f10f1f8,
-    type: 3}
-  enemyTankPrefab: {fileID: 6217536066965667542, guid: fb435b386449fd349aaee8de824af344,
-    type: 3}
+  playerTankProps: {fileID: 11400000, guid: 3513e19550d7aa640bdfb81c49c174e9, type: 2}
+  enemyTankProps: {fileID: 11400000, guid: 1fe053c2289db7a47993140f38056b01, type: 2}

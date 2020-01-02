@@ -13,11 +13,11 @@ TagManager:
   - UI
   - 
   - 
-  - Tank
+  - PlayerTank
   - BG
-  - 
-  - 
-  - 
+  - Shell
+  - Ground
+  - EnemyTank
   - 
   - 
   - 
@@ -55,4 +55,7 @@ TagManager:
     locked: 0
   - name: Tank_Body
     uniqueID: 368450345
+    locked: 0
+  - name: Explosion
+    uniqueID: 1424241067
     locked: 0

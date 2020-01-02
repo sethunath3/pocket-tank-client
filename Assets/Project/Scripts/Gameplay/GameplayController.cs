@@ -16,10 +16,19 @@ namespace PocketTank.Gameplay
             InitializeGameplay();
         }
 
+        public float GetPlayerHealth()
+        {
+            return playerTank.GetHealth();
+        }
+        public float GetEnemyHealth()
+        {
+            return enemyTank.GetHealth();
+        }
+
         public void InitializeGameplay()
         {
-            playerTank = new TankController(gameplayPropertiesSO.playerTankPrefab);
-            enemyTank = new TankController(gameplayPropertiesSO.enemyTankPrefab);
+            playerTank = new TankController(gameplayPropertiesSO.playerTankProps);
+            enemyTank = new TankController(gameplayPropertiesSO.enemyTankProps);
         }
 
         public void SetPlayerTankAngle(float angle)
@@ -30,6 +39,18 @@ namespace PocketTank.Gameplay
         public void SetEnemyTankAngle(float angle)
         {
             enemyTank.SetFiringAngle(180-angle);
+        }
+
+        public void PlayerFired(float angle)
+        {
+            playerTank.SetFiringAngle(angle);
+            playerTank.Fire();
+        }
+
+        public void EnemyFired(float angle)
+        {
+            enemyTank.SetFiringAngle(180-angle);
+            enemyTank.Fire();
         }
     }
 }

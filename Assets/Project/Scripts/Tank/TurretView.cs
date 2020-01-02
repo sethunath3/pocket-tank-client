@@ -11,5 +11,9 @@ namespace PocketTank.Tank
             Debug.Log("angle: " + angle);
             gameObject.transform.rotation = Quaternion.Euler(0, 0, angle);
         }
+        public Quaternion GetFiringAngle()
+        {
+            return gameObject.transform.rotation;
+        }
     }
 }

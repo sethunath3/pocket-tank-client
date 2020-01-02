@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using PocketTank.Game;
 using PocketTank.Gameplay;
+using System;
+using PocketTank.Events;
 
 namespace PocketTank.Screens
 {
@@ -18,17 +20,18 @@ namespace PocketTank.Screens
 
         [SerializeField]
         private Text msgText;
+        [SerializeField]
+        private Slider playerHealth;
+        [SerializeField]
+        private Slider enemyHealth;
         void Start()
         {
             if(fireBtn != null)
             {
                 fireBtn.onClick.AddListener(OnFire);
             }
-        }
-
-        void Update()
-        {
-            
+            EventService.Instance.GameplayEvent_EnemyGotHit+=RefreshDamageToEnemyHealthBar;
+            EventService.Instance.GameplayEvent_PlayerGotHit+=RefreshDamageToPlayerHealthBar;
         }
 
         public void EnableTurn()
@@ -52,6 +55,7 @@ namespace PocketTank.Screens
             Dictionary<string, string> data = new Dictionary<string, string>();
             data["FIRING_ANGLE"] = slider.value.ToString();
             GameService.Instance.GetConnectionController().Emit("FIRED", new JSONObject(data));
+            GameplayService.Instance.PlayerFired(slider.value);
         }
 
         public void SetMsg(string msg)
@@ -65,6 +69,15 @@ namespace PocketTank.Screens
             Dictionary<string, string> data = new Dictionary<string, string>();
             data["FIRING_ANGLE"] = slider.value.ToString();
             GameService.Instance.GetConnectionController().Emit("ANGLE_CHANGED", new JSONObject(data));
+        }
+
+        public void RefreshDamageToPlayerHealthBar()
+        {
+            playerHealth.value = GameplayService.Instance.GetPlayerHealth();
+        }
+        public void RefreshDamageToEnemyHealthBar()
+        {
+            enemyHealth.value = GameplayService.Instance.GetEnemyHealth();
         }
     }
 }

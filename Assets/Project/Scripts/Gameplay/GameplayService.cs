@@ -9,6 +9,7 @@ namespace PocketTank.Gameplay
 {
     public class GameplayService : GenericMonoSingleton<GameplayService>
     {
+        public GameObject explosionPrefab;
         [SerializeField]
         private GameplayUI gameplayUIScript;
         [SerializeField]
@@ -18,6 +19,15 @@ namespace PocketTank.Gameplay
         public void StartGameplay()
         {
             controller = new GameplayController(gameplayPropertiesSO);
+        }
+
+        public float GetPlayerHealth()
+        {
+            return controller.GetPlayerHealth();
+        }
+        public float GetEnemyHealth()
+        {
+            return controller.GetEnemyHealth();
         }
 
         public void EnableGameplayTurn()
@@ -32,6 +42,7 @@ namespace PocketTank.Gameplay
 
         public void EnemyFired(float angle)
         {
+            controller.EnemyFired(angle);
             gameplayUIScript.SetMsg("Enemy Fired at an angle: " + angle);
         }
 
@@ -45,6 +56,9 @@ namespace PocketTank.Gameplay
             controller.SetEnemyTankAngle(angle);
         }
 
-        
+        public void PlayerFired(float angle)
+        {
+            controller.PlayerFired(angle);
+        }
     }
 }

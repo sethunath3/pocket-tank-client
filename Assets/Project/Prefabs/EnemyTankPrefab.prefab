@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3417950365458168010}
   - component: {fileID: 4159801397244787015}
-  m_Layer: 8
+  m_Layer: 12
   m_Name: Wheel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -91,7 +91,7 @@ GameObject:
   - component: {fileID: 718374055947650524}
   - component: {fileID: 961729157479607065}
   - component: {fileID: 679662355518792347}
-  m_Layer: 8
+  m_Layer: 12
   m_Name: Turret
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -183,7 +183,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7794366149574470722}
   - component: {fileID: 6217536066965667542}
-  m_Layer: 8
+  m_Layer: 12
   m_Name: EnemyTankPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -230,7 +230,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8049662213638533557}
   - component: {fileID: 4870681725342508461}
-  m_Layer: 8
+  m_Layer: 12
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
