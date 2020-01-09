@@ -9,4 +9,4 @@ The game is having 4 scenes
 * Gameplay scene
 
 ## Tools Used
-* [Socket.io](https://github.com/floatinghotpot/socket.io-unity) is used for the communicating with the server.
+* [Socket.io](https://github.com/floatinghotpot/socket.io-unity) is used for communicating with the server.
