@@ -13,12 +13,15 @@ namespace PocketTank.Gameplay
         [SerializeField]
         private GameplayUI gameplayUIScript;
         [SerializeField]
+        private GameoverUI gameOverUIScript;
+        [SerializeField]
         private GameplayPropsSO gameplayPropertiesSO;
         private GameplayController controller;
 
         public void StartGameplay()
         {
             controller = new GameplayController(gameplayPropertiesSO);
+            gameOverUIScript.EnableUI(false);
         }
 
         public float GetPlayerHealth()
@@ -32,12 +35,12 @@ namespace PocketTank.Gameplay
 
         public void EnableGameplayTurn()
         {
-            gameplayUIScript.EnableTurn();
+            gameplayUIScript.EnableTurn(true);
         }
 
         public void DisableGameplayTurn()
         {
-            gameplayUIScript.DisableTurn();
+            gameplayUIScript.EnableTurn(false);
         }
 
         public void EnemyFired(float angle)
@@ -59,6 +62,12 @@ namespace PocketTank.Gameplay
         public void PlayerFired(float angle)
         {
             controller.PlayerFired(angle);
+        }
+
+        public void GameOver(bool won)
+        {
+            gameOverUIScript.EnableUI(true);
+            gameOverUIScript.SetWinMessage(won);
         }
     }
 }

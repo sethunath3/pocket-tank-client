@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1331114918493759890}
   - component: {fileID: 1853451927660870565}
   - component: {fileID: 2201939611842410671}
-  m_Layer: 10
+  m_Layer: 13
   m_Name: ShellEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}

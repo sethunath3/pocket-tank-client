@@ -34,20 +34,18 @@ namespace PocketTank.Screens
             EventService.Instance.GameplayEvent_PlayerGotHit+=RefreshDamageToPlayerHealthBar;
         }
 
-        public void EnableTurn()
+        public void EnableTurn(bool turnEnabled)
         {
-            Debug.Log("Enabling turn view");
-            fireBtn.enabled = true;
-            slider.enabled = true;
-            turnInfo.text = "Your turn";
-        }
-
-        public void DisableTurn()
-        {
-            Debug.Log("Disabling turn view");
-            fireBtn.enabled = false;
-            slider.enabled = false;
-            turnInfo.text = "Enemy's turn";
+            fireBtn.gameObject.SetActive(turnEnabled);
+            slider.gameObject.SetActive(turnEnabled);
+            if (turnEnabled)
+            {
+                turnInfo.text = "Your turn";
+            }
+            else{
+                turnInfo.text = "Enemy's turn";
+            }
+            
         }
 
         private void OnFire()

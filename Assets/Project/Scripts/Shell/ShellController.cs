@@ -29,14 +29,14 @@ namespace PocketTank.Shell
             {
                 ExplodeShell();
             }
-            else if(collider.gameObject.layer == (int)GameLayers.PlayerTank)
+            else if(collider.gameObject.layer == (int)GameLayers.PlayerTank && shellView.GetLayer() != 10)
             {
                 IDamageable damagableComponent = collider.gameObject.GetComponent<IDamageable>();
                 damagableComponent.TakeDamage(10);
                 EventService.Instance.PlayerGotHit();
                 ExplodeShell();
             }
-            else if(collider.gameObject.layer == (int)GameLayers.EnemyTank)
+            else if(collider.gameObject.layer == (int)GameLayers.EnemyTank && shellView.GetLayer() != 13)
             {
                 IDamageable damagableComponent = collider.gameObject.GetComponent<IDamageable>();
                 damagableComponent.TakeDamage(10);

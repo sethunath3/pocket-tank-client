@@ -12,12 +12,14 @@ namespace PocketTank.Tank
         private TankView view;
         private ShellPool shellPool;
         private ShellView shellPrefab;
+        private TankType tankType;
         public TankController(TankScriptableObject tankProps)
         {
             model = new TankModel();
             view = GameObject.Instantiate(tankProps.tankPrefab);
             view.SetController(this);
             shellPool = new ShellPool(tankProps.shellPrefab);
+            tankType = tankProps.tankType;
 
             shellPrefab = tankProps.shellPrefab;
         }
@@ -40,6 +42,13 @@ namespace PocketTank.Tank
             {
                 view.DestroyView();
                 view = null;
+                if(tankType == TankType.PlayerTank)
+                {
+                    GameplayService.Instance.GameOver(false);
+                }
+                else{
+                    GameplayService.Instance.GameOver(true);
+                }
             }
         }
 

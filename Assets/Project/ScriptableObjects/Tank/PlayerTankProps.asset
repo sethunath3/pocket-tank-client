@@ -16,3 +16,4 @@ MonoBehaviour:
     type: 3}
   shellPrefab: {fileID: 1331114918493759890, guid: 4ee96f74ff63c084ab51187a0a3f326a,
     type: 3}
+  tankType: 1

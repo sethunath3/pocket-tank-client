@@ -57,6 +57,11 @@ namespace PocketTank.Game
 
         public void UserAuthenticated(SocketIOEvent ev)
         {
+            EnterLobbyScreen();
+        }
+
+        public void EnterLobbyScreen()
+        {
             ChangeGameState(lobbyState);
         }
 

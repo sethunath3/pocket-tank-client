@@ -40,5 +40,9 @@ namespace PocketTank.Shell
         {
             return gameObject.transform.position;
         }
+        public int GetLayer()
+        {
+            return gameObject.layer;
+        }
     }
 }
